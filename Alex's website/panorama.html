@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>  Immersive Virtual Reality </title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+</head>
+<body>
+
+<div id="title">
+<h1> HoloShots: Photorealistic Immersive Virtual Reality </h1>
+</div>
+
+<div id="tabs">
+	<ul>
+		<li> <a href="index.html"> HOME </a> </li>
+		<li> <a href="libraries.html"> PANORAMAS </a> </li>
+		<li> <a href="devices.html"> DEVICES </a> </li>
+	</ul>
+</div>
+
+
+<div id="content">
+
+
+<button onclick="key();"> Click here: Fullscreen VR</button>
+
+  <script src="js/three.min.js"></script>
+  <script src="js/VRControls.js"></script>
+  <script src="js/VREffect1.js"></script>
+
+  <script>
+
+    var renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setClearColor(0xffffff);
+  
+    document.body.appendChild( renderer.domElement );
+
+    var scene = new THREE.Scene();
+
+   
+    var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0, 100 );
+    var controls = new THREE.VRControls( camera );
+    var effect = new THREE.VREffect( renderer );
+    effect.setSize( window.innerWidth, window.innerHeight );
+
+///////
+
+    
+      function getPanoName(variable)
+      {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+      }
+
+    var panoName = getPanoName("pano");
+
+
+    
+    var geo1 = new THREE.SphereGeometry(100,16,16,0,Math.PI/2,0,Math.PI/4);
+    var material1 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/1.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere1 = new THREE.Mesh(geo1,material1);
+
+    var geo1_2 = new THREE.SphereGeometry(100,16,16,0,Math.PI/2,Math.PI/4,Math.PI/4);
+    var material1_2 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/1_2.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere1_2 = new THREE.Mesh(geo1_2,material1_2);
+
+    var geo2 = new THREE.SphereGeometry(100,16,16,Math.PI/2,Math.PI/2,0,Math.PI/4);
+    var material2 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/2.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere2 = new THREE.Mesh(geo2,material2);
+
+    var geo2_2 = new THREE.SphereGeometry(100,16,16,Math.PI/2,Math.PI/2,Math.PI/4,Math.PI/4);
+    var material2_2 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/2_2.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere2_2 = new THREE.Mesh(geo2_2,material2_2);
+
+    camera.position.z = 0;
+
+    var geo3 = new THREE.SphereGeometry(100,16,16,Math.PI,Math.PI/2,0,Math.PI/4);
+    var material3 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/3.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere3 = new THREE.Mesh(geo3,material3);
+
+    var geo3_2 = new THREE.SphereGeometry(100,16,16,Math.PI,Math.PI/2,Math.PI/4,Math.PI/4);
+    var material3_2 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/3_2.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere3_2 = new THREE.Mesh(geo3_2,material3_2);
+
+    var geo4 = new THREE.SphereGeometry(100,16,16,3*Math.PI/2,Math.PI/2,0,Math.PI/4);
+    var material4 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/4.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere4 = new THREE.Mesh(geo4,material4);
+
+    var geo4_2 = new THREE.SphereGeometry(100,16,16,3*Math.PI/2,Math.PI/2,Math.PI/4,Math.PI/4);
+    var material4_2 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/4_2.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere4_2 = new THREE.Mesh(geo4_2,material4_2);
+
+    var geo5 = new THREE.SphereGeometry(100,16,16,0,Math.PI/2,Math.PI/2,Math.PI/4);
+    var material5 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/5.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere5 = new THREE.Mesh(geo5,material5);
+
+    var geo5_2 = new THREE.SphereGeometry(100,16,16,0,Math.PI/2,3*Math.PI/4,Math.PI/4);
+    var material5_2 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/5_2.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere5_2 = new THREE.Mesh(geo5_2,material5_2);
+
+    var geo6 = new THREE.SphereGeometry(100,16,16,Math.PI/2,Math.PI/2,Math.PI/2,Math.PI/4);
+    var material6 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/6.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere6 = new THREE.Mesh(geo6,material6);
+
+    var geo6_2 = new THREE.SphereGeometry(100,16,16,Math.PI/2,Math.PI/2,3*Math.PI/4,Math.PI/4);
+    var material6_2 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/6_2.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere6_2 = new THREE.Mesh(geo6_2,material6_2);
+
+    var geo7 = new THREE.SphereGeometry(100,16,16,Math.PI,Math.PI/2,Math.PI/2,Math.PI/4);
+    var material7 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/7.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere7 = new THREE.Mesh(geo7,material7);
+
+    var geo7_2 = new THREE.SphereGeometry(100,16,16,Math.PI,Math.PI/2,3*Math.PI/4,Math.PI/4);
+    var material7_2 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/7_2.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere7_2 = new THREE.Mesh(geo7_2,material7_2);
+
+    var geo8 = new THREE.SphereGeometry(100,16,16,3*Math.PI/2,Math.PI/2,Math.PI/2,Math.PI/4);
+    var material8 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/8.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere8 = new THREE.Mesh(geo8,material8);
+
+    var geo8_2 = new THREE.SphereGeometry(100,16,16,3*Math.PI/2,Math.PI/2,3*Math.PI/4,Math.PI/4);
+    var material8_2 = new THREE.MeshBasicMaterial({
+      map: THREE.ImageUtils.loadTexture(panoName +'/8_2.jpg'),
+      side: THREE.DoubleSide
+    });
+    var sphere8_2 = new THREE.Mesh(geo8_2,material8_2);
+
+
+    camera.position.z = 0;
+
+    scene.add(sphere1);
+    scene.add(sphere1_2);
+    scene.add(sphere2);
+    scene.add(sphere2_2);
+    scene.add(sphere3);
+    scene.add(sphere3_2);
+    scene.add(sphere4);
+    scene.add(sphere4_2);
+    scene.add(sphere5);
+    scene.add(sphere5_2);
+    scene.add(sphere6);
+    scene.add(sphere6_2);
+    scene.add(sphere7);
+    scene.add(sphere7_2);
+    scene.add(sphere8);
+    scene.add(sphere8_2);
+ 
+
+    function animate() {
+
+      controls.update();
+      effect.render( scene, camera );
+      requestAnimationFrame( animate );
+    }
+
+    animate();
+
+    function key() {
+      effect.setFullScreen(true);
+    }
+
+    /*
+    Handle window resizes
+    */
+    function onWindowResize() {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      effect.setSize( window.innerWidth, window.innerHeight );
+    }
+
+    window.addEventListener( 'resize', onWindowResize, false );
+
+  </script>
+
+</div>
+
+<footer>
+	<p> &copy Alex Morales, 2015</p>
+  	<p> Contact information: <a href="http://cs.boisestate.edu/~scutchin/holoshots/impano.html">
+  	 Computer Science Department, Boise State University</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>three.js WebVR Demo</title>
+    <style>
+      canvas {
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    </style>
+    <script src="js/three.min.js"></script>
+<!--    <script src="js/webvr.js"></script> -->
+    <script src="js/vrutils.js"></script>
+</head>
+<body>
+
+<section style='position: relative; z-index: 2;'>
+    <button id="vrBtn">Activate Oculus Rift!</button>
+    <div id="vrErrorText"><p>Please run me on Chrome with WebVR enabled.</p>
+    </div>
+</section>
+
+<script type="text/javascript">
+var mesh;
+var sphere3 ,sphere2,sphere1,sphere5,sphere6 ,sphere4,sphere7, sphere0;
+function BuildScene()
+{
+ 
+	var scene2 = new THREE.Scene();
+	var geometry0 = new THREE.SphereGeometry( 50, 32, 64,0, Math.PI/2, Math.PI/2, Math.PI/2 );
+	sphere0 = new THREE.Mesh( geometry0, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+	
+	var geometry1 = new THREE.SphereGeometry( 50, 32, 64,Math.PI/2, Math.PI/2, Math.PI/2, Math.PI/2 );
+	sphere1 = new THREE.Mesh( geometry1, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+			
+	var geometry2 = new THREE.SphereGeometry( 50, 32, 64, Math.PI, Math.PI/2, Math.PI/2, Math.PI/2 );
+	sphere2 = new THREE.Mesh( geometry2, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+
+				
+	var geometry3 = new THREE.SphereGeometry( 50, 32, 64,  3*Math.PI/2, Math.PI/2, Math.PI/2, Math.PI/2);
+	sphere3 = new THREE.Mesh( geometry3, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+
+	
+	var geometry4 = new THREE.SphereGeometry( 50, 32, 32,0, Math.PI/2, 0, Math.PI/2 );	
+	sphere4= new THREE.Mesh(geometry4, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );			 
+			
+			
+	var geometry5 = new THREE.SphereGeometry( 50, 32, 64,Math.PI/2, Math.PI/2, 0, Math.PI/2 );
+	sphere5 = new THREE.Mesh( geometry5, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+			
+	var geometry6 = new THREE.SphereGeometry( 50, 32, 64, Math.PI, Math.PI/2, 0, Math.PI/2 );
+	sphere6 = new THREE.Mesh( geometry6, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+
+				
+	var geometry7 = new THREE.SphereGeometry( 50, 32, 64,  3*Math.PI/2, Math.PI/2, 0, Math.PI/2);
+	sphere7 = new THREE.Mesh( geometry7, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );	 
+
+	scene2.add( sphere4);
+	scene2.add( sphere3 );
+	scene2.add( sphere2 );
+	scene2.add( sphere1 );
+	scene2.add( sphere5 );
+	scene2.add( sphere0 );
+	scene2.add( sphere6 );
+	scene2.add( sphere7 );
+	
+	var light = new THREE.DirectionalLight( 0xffffff );
+	light.position.set( 0, 1, 1 ).normalize();
+	scene2.add(light);
+	var ambientLight = new THREE.AmbientLight( 0xffffff );
+	ambientLight.position.set( 0, 1, 1 ).normalize();
+	scene2.add( ambientLight );
+	return scene2;
+}
+
+function BuildScene1()
+{
+   
+	var scene1 = new THREE.Scene();
+	var geometry0 = new THREE.SphereGeometry( 50, 32, 64,0, Math.PI/2, Math.PI/2, Math.PI/2 );
+	sphere0 = new THREE.Mesh( geometry0, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+	
+	var geometry1 = new THREE.SphereGeometry( 50, 32, 64,Math.PI/2, Math.PI/2, Math.PI/2, Math.PI/2 );
+	sphere1 = new THREE.Mesh( geometry1, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+			
+	var geometry2 = new THREE.SphereGeometry( 50, 32, 64, Math.PI, Math.PI/2, Math.PI/2, Math.PI/2 );
+	sphere2 = new THREE.Mesh( geometry2, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+
+				
+	var geometry3 = new THREE.SphereGeometry( 50, 32, 64,  3*Math.PI/2, Math.PI/2, Math.PI/2, Math.PI/2);
+	sphere3 = new THREE.Mesh( geometry3, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+
+	
+	var geometry4 = new THREE.SphereGeometry( 50, 32, 32,0, Math.PI/2, 0, Math.PI/2 );	
+	sphere4= new THREE.Mesh(geometry4, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );			 
+			
+			
+	var geometry5 = new THREE.SphereGeometry( 50, 32, 64,Math.PI/2, Math.PI/2, 0, Math.PI/2 );
+	sphere5 = new THREE.Mesh( geometry5, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+			
+	var geometry6 = new THREE.SphereGeometry( 50, 32, 64, Math.PI, Math.PI/2, 0, Math.PI/2 );
+	sphere6 = new THREE.Mesh( geometry6, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+
+				
+	var geometry7 = new THREE.SphereGeometry( 50, 32, 64,  3*Math.PI/2, Math.PI/2, 0, Math.PI/2);
+	sphere7 = new THREE.Mesh( geometry7, new THREE.MeshPhongMaterial( { map: THREE.ImageUtils.loadTexture('three.jpg'),side: THREE.DoubleSide  } ) );
+
+				 
+				 
+	
+	
+	
+	scene1.add( sphere4);
+	scene1.add( sphere3 );
+	scene1.add( sphere2 );
+	scene1.add( sphere1 );
+	scene1.add( sphere5 );
+	scene1.add( sphere0 );
+	scene1.add( sphere6 );
+	scene1.add( sphere7 );
+	
+	var light = new THREE.DirectionalLight( 0xffffff );
+	light.position.set( 0, 1, 1 ).normalize();
+	scene1.add(light);
+	var ambientLight = new THREE.AmbientLight( 0xffffff );
+	ambientLight.position.set( 0, 1, 1 ).normalize();
+	scene1.add( ambientLight );
+	return scene1;
+}
+
+var VR_DEVICE = null;
+var renderTargetWidth = null;
+var renderTargetHeight = null;
+var VR_BASE_POSITION = new THREE.Vector3();
+var VR_BASE_ROTATION = new THREE.Quaternion();
+var VR_POSITION_SCALE = 1;
+
+var MONO_CAM = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000);
+var VR_CAM_LEFT = new THREE.PerspectiveCamera();
+var VR_CAM_RIGHT = new THREE.PerspectiveCamera();
+
+var CAMERA_PIVOT = new THREE.Object3D();
+CAMERA_PIVOT.add(VR_CAM_LEFT);
+CAMERA_PIVOT.add(VR_CAM_RIGHT);
+CAMERA_PIVOT.add(new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 1000));
+
+var SCENE = BuildScene();
+SCENE.add(CAMERA_PIVOT);
+
+
+var CAMERA_PIVOT1 = new THREE.Object3D();
+
+var SCENE1 = BuildScene1();
+SCENE1.add(CAMERA_PIVOT1);
+
+var RENDERER = new THREE.WebGLRenderer();
+RENDERER.setClearColor(0xEAEAEA, 1.0);
+
+
+GetVRDevices(function(devices) {
+
+    VR_DEVICE = FindFirstVRDevice(devices);
+
+    var leftEyeViewport = VR_DEVICE.hmdDevice.getRecommendedEyeRenderRect('left');
+    var rightEyeViewport = VR_DEVICE.hmdDevice.getRecommendedEyeRenderRect('right');
+    renderTargetWidth = leftEyeViewport.width + rightEyeViewport.width;
+    renderTargetHeight = Math.max(leftEyeViewport.height, rightEyeViewport.height);
+
+    VR_CAM_LEFT.position.add(VR_DEVICE.hmdDevice.getEyeTranslation('left'));
+    VR_CAM_RIGHT.position.add(VR_DEVICE.hmdDevice.getEyeTranslation('right'));
+
+	
+	//change the field of view
+	var fov=VR_DEVICE.hmdDevice.getRecommendedEyeFieldOfView('left');
+	fov.upDegrees /=1.5;
+	
+	var fov1=VR_DEVICE.hmdDevice.getRecommendedEyeFieldOfView('right');
+	fov1.upDegrees /=1.5;
+	
+    VR_CAM_LEFT.projectionMatrix.elements = PerspectiveMatrixFromVRFieldOfView(
+    VR_DEVICE.hmdDevice.getRecommendedEyeFieldOfView('left'), 0.1, 1000
+	   //fov, 0.1,1000
+    );
+    VR_CAM_RIGHT.projectionMatrix.elements = PerspectiveMatrixFromVRFieldOfView(
+    VR_DEVICE.hmdDevice.getRecommendedEyeFieldOfView('right'), 0.1, 1000
+		//fov1, 0.1,1000
+	);
+
+    document.getElementById('vrErrorText').style.display = 'none';
+});
+
+
+function UpdateVirtualCameraWithVRSensorData(
+    sensorDevice, CAMERA_PIVOT, VR_BASE_POSITION, VR_BASE_ROTATION, scale
+) {
+    if (!scale) {
+        scale = 1;
+    }
+
+    var hmdRotation = new THREE.Quaternion();
+    var hmdPosition = new THREE.Vector3();
+    var vrState = sensorDevice.getState();
+    hmdRotation.copy(vrState.orientation);
+    hmdPosition.copy(vrState.position);
+
+    CAMERA_PIVOT.quaternion.multiplyQuaternions(VR_BASE_ROTATION, hmdRotation);
+    CAMERA_PIVOT.position.copy(VR_BASE_POSITION).add(hmdPosition.multiply(new THREE.Vector3(-scale, scale, -scale)));
+}
+
+
+function IsVRMode() {
+    return (document.webkitFullscreenElement || document.mozFullScreenElement);
+}
+
+
+function ResizeRenderer() {
+    if (IsVRMode()) {
+        RENDERER.setSize(renderTargetWidth, renderTargetHeight);
+    } else {
+        MONO_CAM.aspect = window.innerWidth / window.innerHeight;
+        MONO_CAM.updateProjectionMatrix();
+        RENDERER.setSize(window.innerWidth, window.innerHeight);
+    }
+}
+
+
+function Render(timestamp) {
+    if (IsVRMode()) {
+	
+        // Update right and left eye according to VR orientation and position
+        var hmdRotation = new THREE.Quaternion();
+        var hmdPosition = new THREE.Vector3();
+        var vrState = VR_DEVICE.sensorDevice.getState();
+        hmdRotation.copy(vrState.orientation);
+        hmdPosition.copy(vrState.position);
+
+        CAMERA_PIVOT.quaternion.multiplyQuaternions(VR_BASE_ROTATION, hmdRotation);
+        CAMERA_PIVOT.position.copy(VR_BASE_POSITION).add(
+            hmdPosition.multiply(new THREE.Vector3(-VR_POSITION_SCALE, VR_POSITION_SCALE, -VR_POSITION_SCALE)));
+
+        // Render left eye
+        RENDERER.enableScissorTest(true);
+        RENDERER.setScissor(0, 0, renderTargetWidth / 2, renderTargetHeight);
+        RENDERER.setViewport(0, 0, renderTargetWidth / 2, renderTargetHeight);
+        RENDERER.render(SCENE, VR_CAM_LEFT);
+
+        // Render right eye
+        RENDERER.setScissor(renderTargetWidth / 2, 0, renderTargetWidth / 2, renderTargetHeight);
+        RENDERER.setViewport(renderTargetWidth / 2, 0, renderTargetWidth / 2, renderTargetHeight);
+        RENDERER.render(SCENE1, VR_CAM_RIGHT);
+    } else {
+        // Render mono view
+        CAMERA_PIVOT.quaternion.copy(VR_BASE_ROTATION);
+        CAMERA_PIVOT.position.copy(VR_BASE_POSITION);
+        RENDERER.enableScissorTest(false);
+        RENDERER.setViewport(0, 0, window.innerWidth, window.innerHeight);
+        RENDERER.render(SCENE, MONO_CAM);
+    }
+    requestAnimationFrame(Render);
+}
+
+document.addEventListener('webkitfullscreenchange', ResizeRenderer, false);
+document.addEventListener('mozfullscreenchange', ResizeRenderer, false);
+
+
+document.addEventListener( 'keydown', keyPressed, false );
+
+function keyPressed (event) {
+				
+				if (event.keyCode === 75) {//72 h 
+					//mesh.rotation.x -=0.005;
+					sphere0.rotation.x -=0.005;
+					sphere1.rotation.x -=0.005;
+					sphere2.rotation.x -=0.005;
+					sphere3.rotation.x -=0.005;
+					sphere4.rotation.x -=0.005;
+					sphere5.rotation.x -=0.005;
+					sphere6.rotation.x -=0.005;
+					sphere7.rotation.x -=0.005;
+					render();
+				}
+				if (event.keyCode === 73) { 
+					//mesh.rotation.x +=0.005;
+					sphere0.rotation.x -=-0.005;
+					sphere1.rotation.x -=-0.005;
+					sphere2.rotation.x -=-0.005;
+					sphere3.rotation.x -=-0.005;
+					sphere4.rotation.x -=-0.005;
+					sphere5.rotation.x -=-0.005;
+					sphere6.rotation.x -=-0.005;
+					sphere7.rotation.x -=-0.005;
+					render();
+				}
+				if (event.keyCode === 74) {//72 h 
+					//mesh.rotation.y -=0.005;
+					sphere0.rotation.y -=0.005;
+					sphere1.rotation.y -=0.005;
+					sphere2.rotation.y -=0.005;
+					sphere3.rotation.y -=0.005;
+					sphere4.rotation.y -=0.005;
+					sphere5.rotation.y -=0.005;
+					sphere6.rotation.y -=0.005;
+					sphere7.rotation.y -=0.005;
+					render();
+				}
+				if (event.keyCode === 76) { 
+					//mesh.rotation.y +=0.005;
+					sphere0.rotation.y -=-0.005;
+					sphere1.rotation.y -=-0.005;
+					sphere2.rotation.y -=-0.005;
+					sphere3.rotation.y -=-0.005;
+					sphere4.rotation.y -=-0.005;
+					sphere5.rotation.y -=-0.005;
+					sphere6.rotation.y -=-0.005;
+					sphere7.rotation.y -=-0.005;
+					render();
+				}
+}
+document.body.appendChild(RENDERER.domElement);
+document.getElementById('vrBtn').addEventListener(
+    'click',
+    function(){ RequestFullscreen(RENDERER.domElement, VR_DEVICE); },
+    false
+);
+document.add
+window.addEventListener('resize', ResizeRenderer, false);
+window.addEventListener('keydown', function(event) {
+    if (event.altKey) {
+        return;
+    }
+
+    var rotDelta = 0.1;
+    var transDelta = 1;
+
+    switch (event.keyCode) {
+        case 65: /*A*/ VR_BASE_POSITION.x -= transDelta; break;
+        case 68: /*D*/ VR_BASE_POSITION.x += transDelta; break;
+        case 69: /*E*/ VR_BASE_POSITION.y -= transDelta; break;
+        case 81: /*Q*/ VR_BASE_POSITION.y += transDelta; break;
+        case 87: /*W*/ VR_BASE_POSITION.z -= transDelta; break;
+        case 83: /*S*/ VR_BASE_POSITION.z += transDelta; break;
+
+        case 38: /*up*/   VR_BASE_ROTATION.x += rotDelta; break;
+        case 40: /*down*/ VR_BASE_ROTATION.x -= rotDelta; break;
+        case 37: /*left*/  VR_BASE_ROTATION.y += rotDelta; break;
+        case 39: /*right*/ VR_BASE_ROTATION.y -= rotDelta; break;
+
+        case 70: /*F*/ RequestFullscreen(RENDERER.domElement, VR_DEVICE); break;
+        case 82: /*R*/ VR_DEVICE.sensorDevice.zeroSensor(); break;
+    }
+});
+
+//window.addEventListener('load',  function(){ RequestFullscreen(RENDERER.domElement, VR_DEVICE); },false);
+ResizeRenderer();
+Render();
+
+</script>
+
+</body>
+</html>

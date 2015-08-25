@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>  Immersive Virtual Reality </title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href='http://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<!-- 1. Link to jQuery (1.8 or later), -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- 33 KB -->
+<!-- bxSlider Javascript file -->
+<script src="js/jquery.bxslider.min.js"></script>
+<!-- bxSlider CSS file -->
+<link href="css/jquery.bxslider.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div id="title">
+<h1> HoloShots: Photorealistic Immersive Virtual Reality </h1>
+</div>
+
+<div id="tabs">
+	<ul>
+		<li> <a href="index.html"> HOME </a> </li>
+		<li> <a href="libraries.html"> PANORAMAS </a> </li>
+		<li> <a href="devices.html"> DEVICES </a> </li>
+	</ul>
+</div>
+
+<div id="content" >
+<ul class="bxslider">
+ <!-- 	<li> <img src="fullPano/1.jpg" title="DOG!" />	</li>
+ 	<li> <img src="fullPano/2.jpg" /> </li> -->
+  <li> <img src="fullPano/capitol.jpg" title=""/> </li>	
+  <li> <img src="fullPano/Capitol_Entrance.jpg" title=""> </li>
+  <li> <img src="fullPano/capitol_house.jpg" title=""/> </li>
+  <li> <img src="fullPano/penn.JPG" title=""></li>
+</ul>
+</div>
+
+<script>
+	$(document).ready(function(){
+			  $('.bxslider').bxSlider({
+			  	// mode: 'vertical',
+			  	// slideMargin: 10,
+			  	// captions: true,
+			  	auto: true,
+			  	mode: 'fade',
+			  });
+		});
+</script>
+
+
+<footer>
+	<p> &copy Alex Morales, 2015</p>
+  	<p> Contact information: <a href="http://cs.boisestate.edu/~scutchin/holoshots/impano.html">
+  	 Computer Science Department, Boise State University</a></p>
+</footer>
+</body>
+</html>
